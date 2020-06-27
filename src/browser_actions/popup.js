@@ -2,12 +2,14 @@ window.onload = function () {
     chrome.tabs.executeScript({
         code: "window.getSelection().toString();"
     }, function (selection) {
-        chrome.runtime.sendMessage({ selection: selection[0] }, function (response) {
-            const ul = document.getElementById("outputList");
-            response.clips && response.clips.forEach((clip) => {
-                addClip(clip,ul);
+        if(selection && selection.length > 0) {
+            chrome.runtime.sendMessage({ selection: selection[0] }, function (response) {
+                const ul = document.getElementById("outputList");
+                response.clips && response.clips.forEach((clip) => {
+                    addClip(clip,ul);
+                });
             });
-        });
+        }
     });
 
     const clippings = document.getElementById("output")
