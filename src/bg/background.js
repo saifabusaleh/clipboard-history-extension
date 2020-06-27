@@ -1,6 +1,6 @@
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     let clippings = [];
-    chrome.storage.sync.get("list", function (result) {
+    chrome.storage.sync.get("list", (result) => {
         if (request.clear) {
             clippings = [];
         }
