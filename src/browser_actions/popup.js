@@ -5,9 +5,7 @@ window.onload = function () {
         chrome.runtime.sendMessage({ selection: selection[0] }, function (response) {
             const ul = document.getElementById("outputList");
             response.clips && response.clips.forEach((clip) => {
-                const li = document.createElement("li");
-                li.appendChild(document.createTextNode(clip));
-                ul.appendChild(li);
+                addClip(clip,ul);
             });
         });
     });
@@ -20,3 +18,9 @@ window.onload = function () {
         };
     });
 };
+
+const addClip = (clip, ul) => {
+    const li = document.createElement("li");
+    li.appendChild(document.createTextNode(clip));
+    ul.appendChild(li);
+}
