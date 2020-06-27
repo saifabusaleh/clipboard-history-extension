@@ -10,5 +10,5 @@ Load the directory of the project.
 After highlighting text, you will see it in the extension popup
 Clicking on the popup text will remove all saved texts
 
-Images:
-<img src="images/1" alt="img1" height="200">
+**Images:**
+<img src="images/1.png" alt="img1" height="200">
