@@ -1,26 +1,29 @@
-window.onload = function () {
+window.onload = () => {
     chrome.tabs.executeScript({
         code: "window.getSelection().toString();"
-    }, function (selection) {
+    }, (selection) =>  {
         if(selection && selection.length > 0) {
-            chrome.runtime.sendMessage({ selection: selection[0] }, function (response) {
-                const ul = document.getElementById("outputList");
-                response.clips && response.clips.forEach((clip) => {
-                    addClip(clip,ul);
-                });
+            chrome.runtime.sendMessage({ selection: selection[0] }, (response) =>  {
+                handleUpdateClips(response);
             });
         }
     });
 
     const clippings = document.getElementById("output")
 
-    clippings.addEventListener("click", function (e) {        
-        chrome.runtime.sendMessage({ clear: true}), function (response) {
+    clippings.addEventListener("click", (e) =>  {        
+        chrome.runtime.sendMessage({ clear: true}), (response) => {
             text.innerHTML = response.clips;
         };
     });
 };
 
+const handleUpdateClips = (response) => {
+    const ul = document.getElementById("outputList");
+    response.clips && response.clips.forEach((clip) => {
+        addClip(clip,ul);
+    });
+}
 const addClip = (clip, ul) => {
     const li = document.createElement("li");
     li.appendChild(document.createTextNode(clip));
