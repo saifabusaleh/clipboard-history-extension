@@ -4,7 +4,7 @@ window.onload = () => {
     }, (selection) =>  {
         if(selection && selection.length > 0) {
             chrome.runtime.sendMessage({ selection: selection[0] }, (response) =>  {
-                handleUpdateClips(response);
+                handleUpdateClippings(response);
             });
         }
     });
@@ -13,14 +13,14 @@ window.onload = () => {
 
     clippings.addEventListener("click", (e) =>  {        
         chrome.runtime.sendMessage({ clear: true}), (response) => {
-            text.innerHTML = response.clips;
+            text.innerHTML = response.clippings;
         };
     });
 };
 
-const handleUpdateClips = (response) => {
+const handleUpdateClippings = (response) => {
     const ul = document.getElementById("outputList");
-    response.clips && response.clips.forEach((clip) => {
+    response.clippings && response.clippings.forEach((clip) => {
         addClip(clip,ul);
     });
 }

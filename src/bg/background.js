@@ -1,17 +1,13 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    let clippings = [];
-    chrome.storage.sync.get("list", (result) => {
+    chrome.storage.sync.get("list", (result) => {        
+        let clippings = result.list;
         if (request.clear) {
             clippings = [];
         }
-        else if (request.selection && result.list) {
+        else if (request.selection) {
             clippings = [...result.list, request.selection];
-        } else if (result.list) {
-            clippings = [...result.list];
-        } else {
-            clippings = [request.selection];
-        }
-        sendResponse({ clips: clippings });
+        } 
+        sendResponse({ clippings });
         chrome.storage.sync.set({
             list: clippings,
         });
