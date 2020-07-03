@@ -20,5 +20,16 @@
             "src/bg/background.js"
         ],
         "persistent": false
-    }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*/*",
+                "http://*/*"
+            ],
+            "js": [
+                "src/browser_actions/content.js"
+            ]
+        }
+    ]
 }
