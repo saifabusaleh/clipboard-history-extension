@@ -3,15 +3,14 @@ window.onload = () => {
         handleUpdateClippings(response);
     });
 
-    const clippings = document.getElementById("output")
-
-    clippings.addEventListener("click", (e) => {
+    const resetButton = document.getElementById("reset-button");
+    resetButton.addEventListener("click", (e) => {
         chrome.runtime.sendMessage({ clear: true }), (response) => {
             text.innerHTML = response.clippings;
         };
     });
-};
 
+};
 
 const handleUpdateClippings = (response) => {
     const ul = document.getElementById("outputList");
