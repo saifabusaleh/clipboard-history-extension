@@ -13,8 +13,10 @@ body {
     font-size: 12px;
 }
 
-#popup-body  #output:hover{
-    opacity: 0.6;
+#popup-body  li:hover{
+    text-shadow: -.25px -.25px 0 black, 
+    .25px .25px black;
+    /* font-weight:bold; */
 }
 ul {
     padding-inline-start: 0px;
