@@ -21,8 +21,19 @@ body {
 ul {
     padding-inline-start: 0px;
     list-style-type: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 li {
     border: 1px solid;
     margin-top: 1px;
+    justify-content: space-between;
+    display: flex;
 }
+li .text {
+    flex: 3;
+} 
+li .date {
+    flex: 1;
+} 

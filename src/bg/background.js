@@ -5,7 +5,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             clippings = [];
         }
         else if (request.selection) {
-            clippings = [...clippings, request.selection];
+            clippings = [...clippings, { text: request.selection, date: new Date().toLocaleString() }];
         } 
         sendResponse({ clippings });
         chrome.storage.sync.set({

@@ -20,6 +20,13 @@ const handleUpdateClippings = (response) => {
 }
 const addClip = (clip, ul) => {
     const li = document.createElement("li");
-    li.appendChild(document.createTextNode(clip));
+    const textDiv = document.createElement('div');
+    textDiv.textContent = clip.text;
+    textDiv.className = 'text';
+    const dateDiv = document.createElement('div');
+    dateDiv.textContent = clip.date;
+    dateDiv.className = 'date';
+    li.appendChild(textDiv);
+    li.appendChild(dateDiv);
     ul.appendChild(li);
 }
