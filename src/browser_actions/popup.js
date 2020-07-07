@@ -23,6 +23,7 @@ const addClip = (clip, ul) => {
     const textDiv = document.createElement('div');
     textDiv.textContent = clip.text;
     textDiv.className = 'text';
+    textDiv.title = clip.text;
     const dateDiv = document.createElement('div');
     dateDiv.textContent = clip.date;
     dateDiv.className = 'date';
