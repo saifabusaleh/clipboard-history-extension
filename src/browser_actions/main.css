@@ -36,6 +36,9 @@ li .text {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 10px;
 } 
 li .date {
     flex: 1;
