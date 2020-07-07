@@ -10,6 +10,21 @@ window.onload = () => {
         };
     });
 
+    const clippings = document.getElementById("outputList");
+    clippings.addEventListener("click", (e) => {
+        if(e.target.parentElement && e.target.parentElement.querySelector('.text')) {
+            const textToCopy = e.target.parentElement.querySelector('.text').innerText;
+            console.log(textToCopy);
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                /* clipboard successfully set */                
+              }, (e) => {
+                console.error('error copying text, error: ', e);
+              });
+        }
+        
+        
+    });
+
 };
 
 const handleUpdateClippings = (response) => {
