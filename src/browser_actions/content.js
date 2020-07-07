@@ -1,7 +1,11 @@
 window.addEventListener("copy", function (event) {
-    const text = window.getSelection().toString().trim();
-    if(text && text.length > 0) {
-        // console.log(window.getSelection().toString());
-        chrome.runtime.sendMessage({ selection: window.getSelection().toString() });
+    try {
+        const text = window.getSelection().toString().trim();
+        if (text && text.length > 0) {
+            chrome.runtime.sendMessage({ selection: window.getSelection().toString() });
+        }
+    } catch (e) {
+        console.error(e);
     }
+
 });
