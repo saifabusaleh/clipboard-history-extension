@@ -14,6 +14,7 @@ window.onload = () => {
 
 const handleUpdateClippings = (response) => {
     const ul = document.getElementById("outputList");
+    response.clippings = response.clippings.reverse();
     response.clippings && response.clippings.forEach((clip) => {
         addClip(clip, ul);
     });
