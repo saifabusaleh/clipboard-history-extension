@@ -6,7 +6,6 @@ html {
 body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     max-width: 300px;
-    background-color: whitesmoke;
 }
 
 #popup-body  #clippings-container {
@@ -32,10 +31,11 @@ ul {
     overflow-y: auto;
 }
 li {
-    border: 1px solid;
-    margin-top: 1px;
     display: flex;
     margin-top: 0.4rem;
+    background-color: #fff;
+    border: 2px solid #e1e4e8;
+    border-radius: 6px;
 }
 li .text {
     flex: 3;
