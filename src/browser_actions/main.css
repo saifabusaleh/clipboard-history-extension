@@ -6,6 +6,7 @@ html {
 body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     max-width: 300px;
+    background-color: whitesmoke;
 }
 
 #popup-body  #clippings-container {
@@ -16,7 +17,10 @@ body {
 #popup-body  li:hover{
     text-shadow: -.25px -.25px 0 black, 
     .25px .25px black;
-    /* font-weight:bold; */
+}
+#search-input {
+    margin-top: 0.8rem;
+    padding: 0.2rem 1rem;
 }
 ul {
     padding-inline-start: 0px;
@@ -24,12 +28,14 @@ ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    height: 300px;
+    overflow-y: auto;
 }
 li {
     border: 1px solid;
     margin-top: 1px;
-    justify-content: space-between;
     display: flex;
+    margin-top: 0.4rem;
 }
 li .text {
     flex: 3;
