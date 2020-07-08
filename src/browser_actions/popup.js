@@ -11,7 +11,7 @@ window.onload = () => {
 
     const clippings = document.getElementById("clippings-list");
     clippings.addEventListener("click", (e) => {
-        onItemClick(e);
+        onClipClick(e);
     });
 
     const searchInput = document.getElementById("search-input");
@@ -23,7 +23,6 @@ window.onload = () => {
 const renderClippings = (clippings) => {
     const ul = document.getElementById("clippings-list");
     ul.innerHTML = '';
-    clippings = clippings.reverse();
     clippings && clippings.forEach((clip) => {
         addClip(clip, ul);
     });
@@ -64,10 +63,9 @@ const onResetClick = () => {
     };
 }
 
-const onItemClick = (e) => {
+const onClipClick = (e) => {
     if (e.target.parentElement && e.target.parentElement.querySelector('.text')) {
         const textToCopy = e.target.parentElement.querySelector('.text').innerText;
-        console.log(textToCopy);
         navigator.clipboard.writeText(textToCopy).then(() => {
             /* clipboard successfully set */
         }, (e) => {
@@ -79,6 +77,7 @@ const onItemClick = (e) => {
 const renderClippingOnLoad = () => {
     chrome.runtime.sendMessage({}, (response) => {
         clippingsList = response.clippings;
+        clippingsList = clippingsList.reverse();
         renderClippings(response.clippings);
     });
 }
