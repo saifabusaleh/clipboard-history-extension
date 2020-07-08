@@ -1,33 +1,22 @@
 let clippingsList;
+let globalTimeout = null;
+
 window.onload = () => {
-    chrome.runtime.sendMessage({}, (response) => {
-        clippingsList = response.clippings;
-        renderClippings(response.clippings);
-    });
+    renderClippingOnLoad();
 
     const resetButton = document.getElementById("reset-button");
     resetButton.addEventListener("click", (e) => {
-        chrome.runtime.sendMessage({ clear: true }), (response) => {
-            text.innerHTML = response.clippings;
-        };
+        onResetClick();
     });
 
     const clippings = document.getElementById("clippings-list");
     clippings.addEventListener("click", (e) => {
-        if (e.target.parentElement && e.target.parentElement.querySelector('.text')) {
-            const textToCopy = e.target.parentElement.querySelector('.text').innerText;
-            console.log(textToCopy);
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                /* clipboard successfully set */
-            }, (e) => {
-                console.error('error copying text to clipboard, error: ', e);
-            });
-        }
+        onItemClick(e);
     });
 
     const searchInput = document.getElementById("search-input");
     searchInput.addEventListener("keyup", (e) => {
-        onSearchKeyup(e);
+        onSearchInputKeyup(e);
     });
 };
 
@@ -53,13 +42,43 @@ const addClip = (clip, ul) => {
     ul.appendChild(li);
 }
 
-const onSearchKeyup = (e) => {
-    console.log(e.target.value);
-    const searchText = e.target.value.toLowerCase();
-    let filteredList;
-    if(searchText) {
-        filteredList = clippingsList.filter((item) => item.text.includes(searchText));
+const onSearchInputKeyup = (e) => {
+    if (globalTimeout != null) {
+        clearTimeout(globalTimeout);
     }
-    console.log(filteredList);
+    globalTimeout = setTimeout(() => {
+        globalTimeout = null;
+        handleKeyup(e);
+    }, 200);
+}
+
+const handleKeyup = (e) => {
+    const searchText = e.target.value.toLowerCase();
+    const filteredList = clippingsList.filter((item) => item.text.includes(searchText));
     renderClippings(filteredList);
+}
+
+const onResetClick = () => {
+    chrome.runtime.sendMessage({ clear: true }), (response) => {
+        text.innerHTML = response.clippings;
+    };
+}
+
+const onItemClick = (e) => {
+    if (e.target.parentElement && e.target.parentElement.querySelector('.text')) {
+        const textToCopy = e.target.parentElement.querySelector('.text').innerText;
+        console.log(textToCopy);
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            /* clipboard successfully set */
+        }, (e) => {
+            console.error('error copying text to clipboard, error: ', e);
+        });
+    }
+}
+
+const renderClippingOnLoad = () => {
+    chrome.runtime.sendMessage({}, (response) => {
+        clippingsList = response.clippings;
+        renderClippings(response.clippings);
+    });
 }
