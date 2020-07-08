@@ -1,6 +1,8 @@
+let clippingsList;
 window.onload = () => {
     chrome.runtime.sendMessage({}, (response) => {
-        preformUpdateClippings(response);
+        clippingsList = response.clippings;
+        renderClippings(response.clippings);
     });
 
     const resetButton = document.getElementById("reset-button");
@@ -22,12 +24,18 @@ window.onload = () => {
             });
         }
     });
+
+    const searchInput = document.getElementById("search-input");
+    searchInput.addEventListener("keyup", (e) => {
+        onSearchKeyup(e);
+    });
 };
 
-const preformUpdateClippings = (response) => {
+const renderClippings = (clippings) => {
     const ul = document.getElementById("clippings-list");
-    response.clippings = response.clippings.reverse();
-    response.clippings && response.clippings.forEach((clip) => {
+    ul.innerHTML = '';
+    clippings = clippings.reverse();
+    clippings && clippings.forEach((clip) => {
         addClip(clip, ul);
     });
 }
@@ -43,4 +51,15 @@ const addClip = (clip, ul) => {
     li.appendChild(textDiv);
     li.appendChild(dateDiv);
     ul.appendChild(li);
+}
+
+const onSearchKeyup = (e) => {
+    console.log(e.target.value);
+    const searchText = e.target.value.toLowerCase();
+    let filteredList;
+    if(searchText) {
+        filteredList = clippingsList.filter((item) => item.text.includes(searchText));
+    }
+    console.log(filteredList);
+    renderClippings(filteredList);
 }
