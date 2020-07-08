@@ -21,10 +21,13 @@ Extension to save history of copied text.
 
 ## Images
 
-
-<img src="images/1.png" alt="img1" height="200">
-
-<img src="images/2.png" alt="img2" height="400">
-
-<img src="images/3.png" alt="img2" height="400">
+<p align="center">
+    <img src="images/1.png" alt="img1" height="400">
+</p>
+<p align="center">
+    <img src="images/2.png" alt="img1" height="400">
+</p>
+<p align="center">
+    <img src="images/3.png" alt="img1" height="400">
+</p>
 
