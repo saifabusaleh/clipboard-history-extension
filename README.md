@@ -6,9 +6,12 @@ Extension to save history of copied text.
 
 * Clicking on clear saved text will clear all the saved text
 
-* Hovering on one item will show all the text content
+* Hovering on one item will show all the text content in the toolip
 
 * Clicking on one item will copy the text to clipboard
+
+* Searching for text will search all the items for matching text
+
 
 ## Getting started
 1. Turn on developer mode on chrome extensions page
@@ -22,3 +25,6 @@ Extension to save history of copied text.
 <img src="images/1.png" alt="img1" height="200">
 
 <img src="images/2.png" alt="img2" height="400">
+
+<img src="images/3.png" alt="img2" height="400">
+
