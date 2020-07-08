@@ -8,7 +8,7 @@ body {
     max-width: 300px;
 }
 
-#popup-body  #output {
+#popup-body  #clippings-container {
     text-align: center;
     font-size: 12px;
 }

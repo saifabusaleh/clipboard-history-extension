@@ -1,6 +1,6 @@
 window.onload = () => {
     chrome.runtime.sendMessage({}, (response) => {
-        handleUpdateClippings(response);
+        preformUpdateClippings(response);
     });
 
     const resetButton = document.getElementById("reset-button");
@@ -10,25 +10,22 @@ window.onload = () => {
         };
     });
 
-    const clippings = document.getElementById("outputList");
+    const clippings = document.getElementById("clippings-list");
     clippings.addEventListener("click", (e) => {
-        if(e.target.parentElement && e.target.parentElement.querySelector('.text')) {
+        if (e.target.parentElement && e.target.parentElement.querySelector('.text')) {
             const textToCopy = e.target.parentElement.querySelector('.text').innerText;
             console.log(textToCopy);
             navigator.clipboard.writeText(textToCopy).then(() => {
-                /* clipboard successfully set */                
-              }, (e) => {
-                console.error('error copying text, error: ', e);
-              });
+                /* clipboard successfully set */
+            }, (e) => {
+                console.error('error copying text to clipboard, error: ', e);
+            });
         }
-        
-        
     });
-
 };
 
-const handleUpdateClippings = (response) => {
-    const ul = document.getElementById("outputList");
+const preformUpdateClippings = (response) => {
+    const ul = document.getElementById("clippings-list");
     response.clippings = response.clippings.reverse();
     response.clippings && response.clippings.forEach((clip) => {
         addClip(clip, ul);
