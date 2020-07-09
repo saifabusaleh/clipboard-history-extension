@@ -53,6 +53,7 @@ const onSearchInputKeyup = (e) => {
 
 const handleKeyup = (e) => {
     const searchText = e.target.value.toLowerCase();
+    if(searchText.trim().length === 0) return;
     const filteredList = clippingsList.filter((item) => item.text.toLowerCase().includes(searchText));
     const ul = document.getElementById("clippings-list");
     const notFoundTextEle = document.getElementById("not-found-text");
