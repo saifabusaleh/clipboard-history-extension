@@ -2,6 +2,12 @@
 
 Extension to save history of copied text in browser.
 
+## Getting started
+1. Turn on developer mode on chrome extensions page
+2. Click Load unpacked, and then load the directory of the project
+3. After Copying text, you will see it in the extension popup
+
+
 ## How to use
 
 * Clicking on clear saved text will clear all the saved text
@@ -11,13 +17,6 @@ Extension to save history of copied text in browser.
 * Clicking on one item will copy the text to clipboard
 
 * Searching for text will search all the items for matching text
-
-
-## Getting started
-1. Turn on developer mode on chrome extensions page
-2. Click Load unpacked, and then load the directory of the project
-3. After Copying text, you will see it in the extension popup
-
 
 ## Images
 
