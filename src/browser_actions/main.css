@@ -8,20 +8,20 @@ body {
     max-width: 300px;
 }
 
-#popup-body  #clippings-container {
+.body-container  #clippings-container {
     text-align: center;
     font-size: 12px;
 }
 
-#popup-body  li:hover{
+.body-container  li:hover{
     text-shadow: -.25px -.25px 0 black, 
     .25px .25px black;
 }
-#search-input {
+.body-container #search-input {
     margin-top: 0.8rem;
     padding: 0.2rem 1rem;
 }
-ul {
+.body-container ul {
     padding-inline-start: 0px;
     list-style-type: none;
     list-style: none;
@@ -30,15 +30,15 @@ ul {
     height: 300px;
     overflow-y: auto;
 }
-li {
+.body-container li {
     display: flex;
     margin-top: 0.4rem;
     background-color: #fff;
     border: 2px solid #e1e4e8;
     border-radius: 6px;
 }
-li .text {
-    flex: 3;
+.body-container li .text {
+    flex: 3; 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -46,6 +46,11 @@ li .text {
     margin-bottom: auto;
     padding-left: 10px;
 } 
-li .date {
+.body-container li .date {
     flex: 1;
-} 
+}
+
+
+.body-container #reset-button {
+    margin-bottom: 5px;
+}
