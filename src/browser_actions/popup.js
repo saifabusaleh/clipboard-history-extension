@@ -21,14 +21,14 @@ window.onload = () => {
 };
 
 const renderClippings = (clippings) => {
-    const ul = document.getElementById("clippings-list");
-    ul.innerHTML = '';
+    const clippingListEle = document.getElementById("clippings-list");
+    clippingListEle.innerHTML = '';
     clippings && clippings.forEach((clip) => {
-        addClip(clip, ul);
+        addClip(clip, clippingListEle);
     });
 }
-const addClip = (clip, ul) => {
-    const li = document.createElement("li");
+const addClip = (clip, clippingListEle) => {
+    const clippingListItem = document.createElement("li");
     const textDiv = document.createElement('div');
     textDiv.textContent = clip.text;
     textDiv.className = 'text';
@@ -36,9 +36,9 @@ const addClip = (clip, ul) => {
     const dateDiv = document.createElement('div');
     dateDiv.textContent = clip.creationDate;
     dateDiv.className = 'creation-date';
-    li.appendChild(textDiv);
-    li.appendChild(dateDiv);
-    ul.appendChild(li);
+    clippingListItem.appendChild(textDiv);
+    clippingListItem.appendChild(dateDiv);
+    clippingListEle.appendChild(clippingListItem);
 }
 
 const onSearchInputKeyup = (e) => {
@@ -47,23 +47,23 @@ const onSearchInputKeyup = (e) => {
     }
     globalTimeout = setTimeout(() => {
         globalTimeout = null;
-        handleKeyup(e);
+        performSearch(e);
     }, 200);
 }
 
-const handleKeyup = (e) => {
+const performSearch = (e) => {
     const searchText = e.target.value.toLowerCase();
     if(searchText.trim().length === 0) return;
     const filteredList = clippingsList.filter((item) => item.text.toLowerCase().includes(searchText));
-    const ul = document.getElementById("clippings-list");
+    const clippingListEle = document.getElementById("clippings-list");
     const notFoundTextEle = document.getElementById("not-found-text");
     notFoundTextEle.innerHTML = '';
     if(filteredList.length > 0) {
-        ul.classList.remove('hide');
+        clippingListEle.classList.remove('hide');
         renderClippings(filteredList);
     } else {
         notFoundTextEle.innerHTML = `There are no results for '${searchText}'`;
-        ul.classList.add('hide');
+        clippingListEle.classList.add('hide');
     }
 }
 
@@ -86,8 +86,7 @@ const onClipClick = (e) => {
 
 const renderClippingOnLoad = () => {
     chrome.runtime.sendMessage({}, (response) => {
-        clippingsList = response.clippings;
-        clippingsList = clippingsList.reverse();
+        clippingsList = response.clippings.reverse();
         renderClippings(response.clippings);
     });
 }
