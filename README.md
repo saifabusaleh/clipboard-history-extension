@@ -28,11 +28,11 @@ Extension to save history of copied text in browser.
     <img src="images/2.png" alt="img2" height="400">
 </p>
 <p align="center">
-    <img src="images/3.png" alt="img3" height="400">
+    <img src="images/3.png" alt="img3" height="200">
 </p>
 
 <p align="center">
-    <img src="images/4.png" alt="img4" height="400">
+    <img src="images/4.png" alt="img4" height="300">
 </p>
 
 

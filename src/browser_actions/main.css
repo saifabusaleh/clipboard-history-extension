@@ -46,7 +46,7 @@ body {
     margin-bottom: auto;
     padding-left: 10px;
 } 
-.body-container li .date {
+.body-container li .creation-date {
     flex: 1;
 }
 

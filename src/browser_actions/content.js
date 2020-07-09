@@ -7,5 +7,4 @@ window.addEventListener("copy", function (event) {
     } catch (e) {
         console.error(e);
     }
-
 });

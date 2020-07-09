@@ -32,10 +32,10 @@ const addClip = (clip, ul) => {
     const textDiv = document.createElement('div');
     textDiv.textContent = clip.text;
     textDiv.className = 'text';
-    textDiv.title = clip.text;
+    textDiv.title = clip.text.trim();
     const dateDiv = document.createElement('div');
-    dateDiv.textContent = clip.date;
-    dateDiv.className = 'date';
+    dateDiv.textContent = clip.creationDate;
+    dateDiv.className = 'creation-date';
     li.appendChild(textDiv);
     li.appendChild(dateDiv);
     ul.appendChild(li);
