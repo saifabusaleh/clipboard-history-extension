@@ -61,7 +61,7 @@ const handleKeyup = (e) => {
         ul.classList.remove('hide');
         renderClippings(filteredList);
     } else {
-        notFoundTextEle.innerHTML = `${searchText} not found`;
+        notFoundTextEle.innerHTML = `There are no results for '${searchText}'`;
         ul.classList.add('hide');
     }
 }
