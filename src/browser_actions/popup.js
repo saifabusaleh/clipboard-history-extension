@@ -54,7 +54,16 @@ const onSearchInputKeyup = (e) => {
 const handleKeyup = (e) => {
     const searchText = e.target.value.toLowerCase();
     const filteredList = clippingsList.filter((item) => item.text.toLowerCase().includes(searchText));
-    renderClippings(filteredList);
+    const ul = document.getElementById("clippings-list");
+    const notFoundTextEle = document.getElementById("not-found-text");
+    notFoundTextEle.innerHTML = '';
+    if(filteredList.length > 0) {
+        ul.classList.remove('hide');
+        renderClippings(filteredList);
+    } else {
+        notFoundTextEle.innerHTML = `${searchText} not found`;
+        ul.classList.add('hide');
+    }
 }
 
 const onResetClick = () => {

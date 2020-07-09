@@ -54,3 +54,7 @@ body {
 .body-container #reset-button {
     margin-bottom: 5px;
 }
+
+.hide {
+    display: none;
+}
