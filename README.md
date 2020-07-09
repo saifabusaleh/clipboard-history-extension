@@ -1,6 +1,6 @@
 # Text Saver Chrome extension
 
-Extension to save history of copied text.
+Extension to save history of copied text in browser.
 
 ## How to use
 
