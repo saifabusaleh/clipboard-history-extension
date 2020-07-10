@@ -1,10 +1,11 @@
 html {
     text-align: center;
     width: 300px;
+    background-color:rgb(249, 249, 251);
 }
 
 body {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: Inter, sans-serif;
     max-width: 300px;
 }
 
