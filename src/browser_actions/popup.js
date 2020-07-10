@@ -1,5 +1,7 @@
 let clippingsList;
 let globalTimeout = null;
+let clippingListElement;
+let notFoundTextElement;
 
 window.onload = () => {
     renderClippingOnLoad();
@@ -9,8 +11,8 @@ window.onload = () => {
         onResetClick();
     });
 
-    const clippings = document.getElementById("clippings-list");
-    clippings.addEventListener("click", (e) => {
+    clippingListElement = document.getElementById("clippings-list");
+    clippingListElement.addEventListener("click", (e) => {
         onClipClick(e);
     });
 
@@ -18,16 +20,16 @@ window.onload = () => {
     searchInput.addEventListener("keyup", (e) => {
         onSearchInputKeyup(e);
     });
+    notFoundTextElement = document.getElementById("not-found-text");
 };
 
 const renderClippings = (clippings) => {
-    const clippingListEle = document.getElementById("clippings-list");
-    clippingListEle.innerHTML = '';
+    clippingListElement.innerHTML = '';
     clippings && clippings.forEach((clip) => {
-        addClip(clip, clippingListEle);
+        addClip(clip);
     });
 }
-const addClip = (clip, clippingListEle) => {
+const addClip = (clip) => {
     const clippingListItem = document.createElement("li");
     const textDiv = document.createElement('div');
     textDiv.textContent = clip.text;
@@ -38,7 +40,7 @@ const addClip = (clip, clippingListEle) => {
     dateDiv.className = 'creation-date';
     clippingListItem.appendChild(textDiv);
     clippingListItem.appendChild(dateDiv);
-    clippingListEle.appendChild(clippingListItem);
+    clippingListElement.appendChild(clippingListItem);
 }
 
 const onSearchInputKeyup = (e) => {
@@ -54,15 +56,13 @@ const onSearchInputKeyup = (e) => {
 
 const performSearch = (searchText) => {
     const filteredList = clippingsList.filter((item) => item.text.toLowerCase().includes(searchText));
-    const clippingListEle = document.getElementById("clippings-list");
-    const notFoundTextEle = document.getElementById("not-found-text");
-    notFoundTextEle.innerHTML = '';
+    notFoundTextElement.innerHTML = '';
     if (filteredList.length > 0) {
-        clippingListEle.classList.remove('hide');
+        clippingListElement.classList.remove('hide');
         renderClippings(filteredList);
     } else {
-        notFoundTextEle.innerHTML = `There are no results for '${searchText}'`;
-        clippingListEle.classList.add('hide');
+        notFoundTextElement.innerHTML = `There are no results for '${searchText}'`;
+        clippingListElement.classList.add('hide');
     }
 }
 
