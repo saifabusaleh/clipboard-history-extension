@@ -47,18 +47,17 @@ const onSearchInputKeyup = (e) => {
     }
     globalTimeout = setTimeout(() => {
         globalTimeout = null;
-        performSearch(e);
-    }, 200);
+        const searchText = e.target.value.toLowerCase();
+        performSearch(searchText);
+    }, 300);
 }
 
-const performSearch = (e) => {
-    const searchText = e.target.value.toLowerCase();
-    if(searchText.trim().length === 0) return;
+const performSearch = (searchText) => {
     const filteredList = clippingsList.filter((item) => item.text.toLowerCase().includes(searchText));
     const clippingListEle = document.getElementById("clippings-list");
     const notFoundTextEle = document.getElementById("not-found-text");
     notFoundTextEle.innerHTML = '';
-    if(filteredList.length > 0) {
+    if (filteredList.length > 0) {
         clippingListEle.classList.remove('hide');
         renderClippings(filteredList);
     } else {
