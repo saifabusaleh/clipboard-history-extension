@@ -9,18 +9,13 @@ body {
     max-width: 300px;
 }
 
-.body-container #clippings-container {
-    text-align: center;
-    font-size: 12px;
-}
-
 .body-container li:hover {
     text-shadow: -.25px -.25px 0 black, .25px .25px black;
 }
 
 .body-container #search-input {
-    margin-top: 0.8rem;
-    padding: 0.2rem 1rem;
+    margin-top: .8rem;
+    padding: .2rem 1rem;
 }
 
 .body-container ul {
@@ -35,7 +30,7 @@ body {
 
 .body-container li {
     display: flex;
-    margin-top: 0.4rem;
+    margin-top: .4rem;
     background-color: #fff;
     border: 2px solid #e1e4e8;
     border-radius: 6px;
