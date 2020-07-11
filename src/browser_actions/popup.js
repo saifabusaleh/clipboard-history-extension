@@ -1,5 +1,4 @@
 let clippingsList;
-let globalTimeout = null;
 let clippingListElement;
 let notFoundTextElement;
 
@@ -17,9 +16,9 @@ window.onload = () => {
     });
 
     const searchInput = document.getElementById("search-input");
-    searchInput.addEventListener("keyup", (e) => {
+    searchInput.addEventListener("keyup", debounce((e) => {
         onSearchInputKeyup(e);
-    });
+    }, 300));
     notFoundTextElement = document.getElementById("not-found-text");
 };
 
@@ -44,14 +43,8 @@ const addClip = (clip) => {
 }
 
 const onSearchInputKeyup = (e) => {
-    if (globalTimeout != null) {
-        clearTimeout(globalTimeout);
-    }
-    globalTimeout = setTimeout(() => {
-        globalTimeout = null;
-        const searchText = e.target.value.toLowerCase();
-        performSearch(searchText);
-    }, 300);
+    const searchText = e.target.value.toLowerCase();
+    performSearch(searchText);
 }
 
 const performSearch = (searchText) => {
@@ -89,3 +82,17 @@ const renderClippingOnLoad = () => {
         renderClippings(response.clippings);
     });
 }
+
+const debounce = (func, wait) => {
+    let timeout;
+
+    return function executedFunction(...args) {
+        const later = () => {
+            timeout = null;
+            func(...args);
+        };
+
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+};
