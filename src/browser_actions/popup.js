@@ -83,16 +83,18 @@ const renderClippingOnLoad = () => {
     });
 }
 
-const debounce = (func, wait) => {
-    let timeout;
+const debounce = (fn, timeoutInterval) => {
+    let timer; 
+    
+    return (...args) => {
+        if (timer) {
+            clearTimeout(timer);
+        }
 
-    return function executedFunction(...args) {
-        const later = () => {
-            timeout = null;
-            func(...args);
-        };
-
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+        const funcToExec = () => {
+            fn(...args);
+        }
+      
+        timer = setTimeout(funcToExec, timeoutInterval)
     };
-};
+  }
