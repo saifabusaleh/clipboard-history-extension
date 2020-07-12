@@ -2,6 +2,8 @@
 
 Extension to save history of copied text in browser.
 
+it saves each item copied on the clipboard allowing you access to any of those items at any time later.
+
 ## Getting started
 1. Turn on developer mode on chrome extensions page
 2. Click Load unpacked, and then load the directory of the project
@@ -33,5 +35,3 @@ Extension to save history of copied text in browser.
 <p align="center">
     <img src="images/4.png" alt="img4" height="300">
 </p>
-
-

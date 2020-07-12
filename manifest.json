@@ -2,9 +2,8 @@
     "manifest_version": 2,
     "name": "Clipboard History",
     "version": "1.0",
-    "description": "Paste your highlighted text into a file from anywhere on the web.",
+    "description": "Extension to save history of copied text in browser",
     "permissions": [
-        "activeTab",
         "storage"
     ],
     "icons": {
