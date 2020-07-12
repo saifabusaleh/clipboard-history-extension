@@ -90,11 +90,6 @@ const debounce = (fn, timeoutInterval) => {
         if (timer) {
             clearTimeout(timer);
         }
-
-        const funcToExec = () => {
-            fn(...args);
-        }
-      
-        timer = setTimeout(funcToExec, timeoutInterval)
+        timer = setTimeout(fn, timeoutInterval, ...args)
     };
   }
