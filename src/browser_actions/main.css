@@ -1,7 +1,7 @@
 html {
     text-align: center;
     width: 300px;
-    background-color:rgb(249, 249, 251);
+    background-color: rgb(249, 249, 251);
 }
 
 body {
@@ -10,12 +10,12 @@ body {
 }
 
 .body-container li:hover {
-    text-shadow: -.25px -.25px 0 black, .25px .25px black;
+    text-shadow: -0.25px -0.25px 0 black, 0.25px 0.25px black;
 }
 
 .body-container #search-input {
-    margin-top: .8rem;
-    padding: .2rem 1rem;
+    margin-top: 0.8rem;
+    padding: 0.2rem 1rem;
 }
 
 .body-container ul {
@@ -30,7 +30,7 @@ body {
 
 .body-container li {
     display: flex;
-    margin-top: .4rem;
+    margin-top: 0.4rem;
     background-color: #fff;
     border: 2px solid #e1e4e8;
     border-radius: 6px;

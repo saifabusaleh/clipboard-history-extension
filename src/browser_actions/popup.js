@@ -84,12 +84,12 @@ const renderClippingOnLoad = () => {
 }
 
 const debounce = (fn, timeoutInterval) => {
-    let timer; 
-    
+    let timer;
+
     return (...args) => {
         if (timer) {
             clearTimeout(timer);
         }
         timer = setTimeout(fn, timeoutInterval, ...args)
     };
-  }
+}
