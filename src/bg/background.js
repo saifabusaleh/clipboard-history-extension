@@ -1,14 +1,16 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.hasOwnProperty("toggleTheme")) {
-        chrome.storage.sync.get("darkTheme", (result) => {
-            let darkTheme = result.darkTheme;
-            if (request.toggleTheme) {
-                darkTheme = !darkTheme;
-            }
-            sendResponse({ darkTheme: darkTheme });
-            chrome.storage.sync.set({
-                darkTheme: darkTheme,
+    if ("toggleTheme" in request) {
+        chrome.storage.sync.get("isDarkTheme", (result) => {
+            const darkThemeToggeled = !result.isDarkTheme;
+
+            chrome.storage.sync.set({ isDarkTheme: darkThemeToggeled }, () => {
+                sendResponse({ isDarkTheme: darkThemeToggeled });
             });
+        });
+    }
+    else if("getTheme" in request) {
+        chrome.storage.sync.get("isDarkTheme", (result) => {
+            sendResponse({ isDarkTheme: result.isDarkTheme });
         });
     }
     else {
@@ -20,9 +22,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             else if (request.selection) {
                 clippings = [...clippings, { text: request.selection, creationDate: new Date().toLocaleString() }];
             }
-            sendResponse({ clippings });
-            chrome.storage.sync.set({
-                list: clippings,
+            chrome.storage.sync.set({ list: clippings}, () => {
+                sendResponse({ clippings });
             });
         });
     }

@@ -1,8 +1,10 @@
 let clippingsList;
 let clippingListElement;
 let notFoundTextElement;
-let themeChanger;
-let bg;
+let themeImg;
+let htmlElement;
+const darkThemeToggleImg = "moon.png";
+const lightThemeToggleImg = "sun.png";
 
 window.onload = () => {
     renderClippingOnLoad();
@@ -23,16 +25,16 @@ window.onload = () => {
     }, 300));
     notFoundTextElement = document.getElementById("not-found-text");
 
-    themeChanger = document.querySelector("#theme-changer");
-    themeChanger.addEventListener("click", (e) => {
+    themeImg = document.querySelector("#theme-image");
+    themeImg.addEventListener("click", (e) => {
         changeTheme();
     });
 
-    bg = document.querySelector("html");
-    chrome.runtime.sendMessage({ toggleTheme: false }, (response) => {
-        if (response.darkTheme === true) {
-            bg.classList.add("dark-theme");
-            themeChanger.setAttribute("src", "moon.png");
+    htmlElement = document.querySelector("html");
+    themeImg.setAttribute("src", lightThemeToggleImg);
+    chrome.runtime.sendMessage({ getTheme: true }, (response) => {
+        if (response.isDarkTheme) {
+            setDarkTheme();
         }
     });
 };
@@ -112,13 +114,20 @@ const debounce = (fn, timeoutInterval) => {
 
 const changeTheme = () => {
     chrome.runtime.sendMessage({ toggleTheme: true }, (response) => {
-        console.log(response)
-        if (response.darkTheme === true) {
-            bg.classList.add("dark-theme");
-            themeChanger.setAttribute("src", "moon.png");
+        if (response.isDarkTheme) {
+            setDarkTheme();
         } else {
-            bg.classList.remove("dark-theme");
-            themeChanger.setAttribute("src", "sun.png");
+            setLightTheme();
         }
     });
+}
+
+const setLightTheme = () => {
+    htmlElement.classList.remove("dark-theme");
+    themeImg.setAttribute("src", lightThemeToggleImg);
+}
+
+const setDarkTheme = () => {
+    htmlElement.classList.add("dark-theme");
+    themeImg.setAttribute("src", darkThemeToggleImg);
 }
