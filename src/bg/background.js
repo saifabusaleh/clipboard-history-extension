@@ -1,5 +1,5 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.hasOwnProperty("toggleTheme")) {
+    if ("toggleTheme" in request) {
         chrome.storage.sync.get("isDarkTheme", (result) => {
             const darkThemeToggeled = !result.isDarkTheme;
 
