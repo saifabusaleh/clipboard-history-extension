@@ -29,7 +29,7 @@ window.onload = () => {
     });
 
     bg = document.querySelector("html");
-    chrome.runtime.sendMessage({}, (response) => {
+    chrome.runtime.sendMessage({ toggleTheme: false }, (response) => {
         if (response.darkTheme === true) {
             bg.classList.add("dark-theme");
             themeChanger.setAttribute("src", "moon.png");
