@@ -1,6 +1,8 @@
 let clippingsList;
 let clippingListElement;
 let notFoundTextElement;
+let themeChanger;
+let bg;
 
 window.onload = () => {
     renderClippingOnLoad();
@@ -21,19 +23,18 @@ window.onload = () => {
     }, 300));
     notFoundTextElement = document.getElementById("not-found-text");
 
-    const themeChangers = document.querySelectorAll(".theme-changer");
-    themeChangers.forEach((changer) => {
-        changer.addEventListener("click", (e) => {
-            changeTheme(changer);
-        });
+    themeChanger = document.querySelector("#theme-changer");
+    themeChanger.addEventListener("click", (e) => {
+        changeTheme();
     });
 
-    const darkTheme = localStorage.getItem("darkTheme");
-    if (darkTheme === "true") {
-        changer = document.querySelector(".visible-changer");
-        localStorage.setItem("darkTheme", false);
-        changer.click();
-    }
+    bg = document.querySelector("html");
+    chrome.runtime.sendMessage({}, (response) => {
+        if (response.darkTheme === true) {
+            bg.classList.add("dark-theme");
+            themeChanger.setAttribute("src", "moon.png");
+        }
+    });
 };
 
 const renderClippings = (clippings) => {
@@ -109,18 +110,15 @@ const debounce = (fn, timeoutInterval) => {
     };
 }
 
-const changeTheme = (changer) => {
-    const hiddenChanger = document.querySelector(".theme-changer:not(.visible-changer)");
-    const darkTheme = localStorage.getItem("darkTheme");
-    const bg = document.querySelector("html");
-    hiddenChanger.classList.add("visible-changer");
-    changer.classList.remove("visible-changer");
-
-    if (darkTheme === "true") {
-        localStorage.setItem("darkTheme", false)
-        bg.classList.remove("dark-theme");
-    } else {
-        localStorage.setItem("darkTheme", true)
-        bg.classList.add("dark-theme");
-    }
+const changeTheme = () => {
+    chrome.runtime.sendMessage({ toggleTheme: true }, (response) => {
+        console.log(response)
+        if (response.darkTheme === true) {
+            bg.classList.add("dark-theme");
+            themeChanger.setAttribute("src", "moon.png");
+        } else {
+            bg.classList.remove("dark-theme");
+            themeChanger.setAttribute("src", "sun.png");
+        }
+    });
 }

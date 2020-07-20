@@ -25,6 +25,15 @@ body {
     max-width: 300px;
 }
 
+#top-container {
+    display: flex;
+    align-items: center;
+}
+
+#top-container h2 {
+    margin-left: 48px;
+}
+
 .body-container li:hover {
     text-shadow: -0.25px -0.25px 0 black, 0.25px 0.25px black;
 }
@@ -74,11 +83,9 @@ body {
     display: none;
 }
 
-.theme-changer {
+#theme-changer {
     width: 18px;
     height: 18px;
-    position: absolute;
-    left: 8px;
 }
 
 .theme-changer:not(.visible-changer) {
