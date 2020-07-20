@@ -1,13 +1,11 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.hasOwnProperty("toggleTheme")) {
-        chrome.storage.sync.get("darkTheme", (result) => {
-            let darkTheme = result.darkTheme;
-            if (request.toggleTheme) {
-                darkTheme = !darkTheme;
-            }
-            sendResponse({ darkTheme: darkTheme });
+        chrome.storage.sync.get("isDarkTheme", (result) => {
+            const darkThemeToggeled = !result.isDarkTheme;
+
+            sendResponse({ isDarkTheme: darkThemeToggeled });
             chrome.storage.sync.set({
-                darkTheme: darkTheme,
+                isDarkTheme: darkThemeToggeled,
             });
         });
     }
