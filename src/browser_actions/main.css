@@ -31,8 +31,7 @@ body {
 }
 
 #top-container h2 {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 48px;
 }
 
 .body-container li:hover {
