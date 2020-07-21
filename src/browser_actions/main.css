@@ -4,9 +4,34 @@ html {
     background-color: rgb(249, 249, 251);
 }
 
+html.dark-theme, html.dark-theme * {
+    background-color: #1c1c1c;
+    color: #fff;
+}
+
+html.dark-theme button,
+html.dark-theme input,
+html.dark-theme .body-container li {
+    border-color: #303030;
+    border-style: solid;
+}
+
+html.dark-theme .body-container li:hover {
+    text-shadow: -0.25px -0.25px 0 white, 0.25px 0.25px white;
+}
+
 body {
     font-family: Inter, sans-serif;
     max-width: 300px;
+}
+
+#top-container {
+    display: flex;
+    align-items: center;
+}
+
+#top-container h2 {
+    margin-left: 48px;
 }
 
 .body-container li:hover {
@@ -31,7 +56,6 @@ body {
 .body-container li {
     display: flex;
     margin-top: 0.4rem;
-    background-color: #fff;
     border: 2px solid #e1e4e8;
     border-radius: 6px;
 }
@@ -56,4 +80,9 @@ body {
 
 .hide {
     display: none;
+}
+
+#theme-image {
+    width: 18px;
+    height: 18px;
 }

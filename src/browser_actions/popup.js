@@ -1,6 +1,10 @@
 let clippingsList;
 let clippingListElement;
 let notFoundTextElement;
+let themeImg;
+let htmlElement;
+const darkThemeToggleImg = "moon.png";
+const lightThemeToggleImg = "sun.png";
 
 window.onload = () => {
     renderClippingOnLoad();
@@ -20,23 +24,37 @@ window.onload = () => {
         onSearchInputKeyup(e);
     }, 300));
     notFoundTextElement = document.getElementById("not-found-text");
+
+    themeImg = document.querySelector("#theme-image");
+    themeImg.addEventListener("click", (e) => {
+        changeTheme();
+    });
+
+    htmlElement = document.querySelector("html");
+    themeImg.setAttribute("src", lightThemeToggleImg);
+    chrome.runtime.sendMessage({ getTheme: true }, (response) => {
+        if (response.isDarkTheme) {
+            setDarkTheme();
+        }
+    });
 };
 
 const renderClippings = (clippings) => {
-    clippingListElement.innerHTML = '';
+    clippingListElement.innerHTML = "";
     clippings && clippings.forEach((clip) => {
         addClip(clip);
     });
 }
+
 const addClip = (clip) => {
     const clippingListItem = document.createElement("li");
-    const textDiv = document.createElement('div');
+    const textDiv = document.createElement("div");
     textDiv.textContent = clip.text;
-    textDiv.className = 'text';
+    textDiv.className = "text";
     textDiv.title = clip.text.trim();
-    const dateDiv = document.createElement('div');
+    const dateDiv = document.createElement("div");
     dateDiv.textContent = clip.creationDate;
-    dateDiv.className = 'creation-date';
+    dateDiv.className = "creation-date";
     clippingListItem.appendChild(textDiv);
     clippingListItem.appendChild(dateDiv);
     clippingListElement.appendChild(clippingListItem);
@@ -49,13 +67,13 @@ const onSearchInputKeyup = (e) => {
 
 const performSearch = (searchText) => {
     const filteredList = clippingsList.filter((item) => item.text.toLowerCase().includes(searchText));
-    notFoundTextElement.innerHTML = '';
+    notFoundTextElement.innerHTML = "";
     if (filteredList.length > 0) {
-        clippingListElement.classList.remove('hide');
+        clippingListElement.classList.remove("hide");
         renderClippings(filteredList);
     } else {
-        notFoundTextElement.innerHTML = `There are no results for '${searchText}'`;
-        clippingListElement.classList.add('hide');
+        notFoundTextElement.innerHTML = `There are no results for "${searchText}"`;
+        clippingListElement.classList.add("hide");
     }
 }
 
@@ -66,12 +84,12 @@ const onResetClick = () => {
 }
 
 const onClipClick = (e) => {
-    if (e.target.parentElement && e.target.parentElement.querySelector('.text')) {
-        const textToCopy = e.target.parentElement.querySelector('.text').innerText;
+    if (e.target.parentElement && e.target.parentElement.querySelector(".text")) {
+        const textToCopy = e.target.parentElement.querySelector(".text").innerText;
         navigator.clipboard.writeText(textToCopy).then(() => {
             /* clipboard successfully set */
         }, (e) => {
-            console.error('error copying text to clipboard, error: ', e);
+            console.error("error copying text to clipboard, error: ", e);
         });
     }
 }
@@ -92,4 +110,24 @@ const debounce = (fn, timeoutInterval) => {
         }
         timer = setTimeout(fn, timeoutInterval, ...args)
     };
+}
+
+const changeTheme = () => {
+    chrome.runtime.sendMessage({ toggleTheme: true }, (response) => {
+        if (response.isDarkTheme) {
+            setDarkTheme();
+        } else {
+            setLightTheme();
+        }
+    });
+}
+
+const setLightTheme = () => {
+    htmlElement.classList.remove("dark-theme");
+    themeImg.setAttribute("src", lightThemeToggleImg);
+}
+
+const setDarkTheme = () => {
+    htmlElement.classList.add("dark-theme");
+    themeImg.setAttribute("src", darkThemeToggleImg);
 }
