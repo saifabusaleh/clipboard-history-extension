@@ -78,9 +78,7 @@ const performSearch = (searchText) => {
 }
 
 const onResetClick = () => {
-    chrome.runtime.sendMessage({ clear: true }), (response) => {
-        text.innerHTML = response.clippings;
-    };
+    chrome.runtime.sendMessage({ clear: true });
 }
 
 const onClipClick = (e) => {
