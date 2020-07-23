@@ -1,8 +1,4 @@
-let clippingsList;
-let clippingListElement;
-let notFoundTextElement;
-let themeImg;
-let htmlElement;
+let clippingsList, clippingListElement, notFoundTextElement, themeImg, htmlElement;
 const darkThemeToggleImg = "moon.png";
 const lightThemeToggleImg = "sun.png";
 
