@@ -31,15 +31,15 @@ const getTheme = (sendResponse) => {
 
 
 const getClippings = (request, sendResponse) => {
-    chrome.storage.sync.get("list", (result) => {
-        let clippings = result.list || [];
+    chrome.storage.sync.get("clippings", (result) => {
+        let clippings = result.clippings || [];
         if (request.clear) {
             clippings = [];
         }
         else if (request.selection) {
             clippings = [...clippings, { text: request.selection, creationDate: new Date().toLocaleString() }];
         }
-        chrome.storage.sync.set({ list: clippings }, () => {
+        chrome.storage.sync.set({ clippings }, () => {
             sendResponse({ clippings });
         });
     });
