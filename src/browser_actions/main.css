@@ -1,25 +1,36 @@
-html {
+:root {
     text-align: center;
     width: 300px;
-    background-color: rgb(249, 249, 251);
 }
 
-html.dark-theme, html.dark-theme * {
-    background-color: #1c1c1c;
-    color: #fff;
+:root {
+    /* Light Mode colors */
+    --bg: rgb(249, 249, 251);
+    --fg: #222;
 }
 
-html.dark-theme button,
-html.dark-theme input,
-html.dark-theme .body-container li {
+.dark-theme {
+    /* Dark Mode colors */
+    --bg: #1c1c1c;
+    --fg: #fff;
+}
+
+.dark-theme button,
+.dark-theme input,
+.dark-theme .body-container li {
     border-color: #303030;
     border-style: solid;
 }
 
-html.dark-theme .body-container li:hover {
-    text-shadow: -0.25px -0.25px 0 white, 0.25px 0.25px white;
+.body-container li:hover {
+    text-shadow: -0.25px -0.25px 0 var(--fg), 0.25px 0.25px var(--fg);
 }
 
+html,
+body {
+    background: var(--bg);
+    color: var(--fg);
+}
 body {
     font-family: Inter, sans-serif;
     max-width: 300px;
@@ -28,14 +39,13 @@ body {
 #top-container {
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
 }
 
-#top-container h2 {
-    margin-left: 48px;
-}
-
-.body-container li:hover {
-    text-shadow: -0.25px -0.25px 0 black, 0.25px 0.25px black;
+#top-container .title {
+    margin-left: auto;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .body-container #search-input {
@@ -82,7 +92,9 @@ body {
     display: none;
 }
 
-#theme-image {
-    width: 18px;
-    height: 18px;
+#theme-btn {
+    background: none;
+    border: none;
+    outline: none;
+    margin-left: auto;
 }
