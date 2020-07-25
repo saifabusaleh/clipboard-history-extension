@@ -1,6 +1,6 @@
 let clippingsList, clippingListElement, notFoundTextElement, themeImg, htmlElement;
-const darkThemeToggleImg = "moon.png";
-const lightThemeToggleImg = "sun.png";
+const darkThemeToggleImg = "../../icons/moon.png";
+const lightThemeToggleImg = "../../icons/sun.png";
 
 window.onload = () => {
     renderClippingOnLoad();
