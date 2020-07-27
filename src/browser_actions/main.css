@@ -1,5 +1,4 @@
 :root {
-    text-align: center;
     width: 300px;
 }
 
@@ -27,10 +26,6 @@
     outline: none;
 }
 
-.body-container li:hover {
-    text-shadow: -0.25px -0.25px 0 var(--fg), 0.25px 0.25px var(--fg);
-}
-
 html,
 body,
 input {
@@ -39,28 +34,17 @@ input {
 }
 body {
     font-family: Inter, sans-serif;
-    max-width: 300px;
 }
 
 #top-container {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
 }
 
-.body-container #search-input {
-    margin-top: 0.8rem;
-    padding: 0.2rem 1rem;
-}
-
-.body-container ul {
-    padding-inline-start: 0px;
-    list-style-type: none;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    height: 300px;
-    overflow-y: auto;
+.body-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 280px;
 }
 
 .body-container li {
@@ -84,8 +68,31 @@ body {
     flex: 1;
 }
 
+.body-container li:hover {
+    text-shadow: -0.25px -0.25px 0 var(--fg), 0.25px 0.25px var(--fg);
+}
+
+.body-container #search-input {
+    padding: 0.2rem 1rem;
+}
+
+.body-container ul {
+    padding-inline-start: 0px;
+    list-style-type: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 300px;
+    overflow-y: auto;
+}
+
 .body-container #reset-button {
-    margin-bottom: 5px;
+    width: 130px;
+    margin: 0 auto;
+}
+
+#clippings-container {
+    margin-top: 10px;
 }
 
 .hide {
