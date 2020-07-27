@@ -14,9 +14,7 @@
     --fg: #fff;
 }
 
-.dark-theme button,
-.dark-theme input,
-.dark-theme .body-container li {
+.dark-theme button, .dark-theme input, .dark-theme .body-container li {
     border-color: #303030;
     border-style: solid;
 }
@@ -26,12 +24,11 @@
     outline: none;
 }
 
-html,
-body,
-input {
+html, body, input {
     background: var(--bg);
     color: var(--fg);
 }
+
 body {
     font-family: Inter, sans-serif;
 }
