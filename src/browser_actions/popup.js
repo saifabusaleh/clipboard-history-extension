@@ -22,7 +22,7 @@ window.onload = () => {
     notFoundTextElement = document.getElementById("not-found-text");
 
     themePath = document.querySelector("#dark-theme-path");
-    const themeBtn = document.querySelector("#theme-btn");
+    const themeBtn = document.querySelector("#theme-button");
     themeBtn.addEventListener("click", (e) => {
         changeTheme();
     });

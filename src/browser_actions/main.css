@@ -35,7 +35,6 @@ body {
 
 #top-container {
     display: flex;
-    align-items: center;
 }
 
 .body-container {
@@ -86,6 +85,7 @@ body {
 .body-container #reset-button {
     width: 130px;
     margin: 0 auto;
+    padding: 5px;
 }
 
 #clippings-container {
@@ -96,7 +96,7 @@ body {
     display: none;
 }
 
-#theme-btn {
+#theme-button {
     background: none;
     border: none;
     outline: none;
