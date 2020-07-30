@@ -1,3 +1,8 @@
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-yellow.svg?style=flat)](https://github.com/Coding-Coach/find-a-mentor/issues)
+[![The MIT License](https://flat.badgen.net/badge/license/MIT/orange)](http://opensource.org/licenses/MIT)
+![GitHub](https://flat.badgen.net/github/release/saifabusaleh/clipboard-history-extension/1.1)
+
+
 # Text Saver Chrome extension
 
 Extension to save history of copied text in browser.
