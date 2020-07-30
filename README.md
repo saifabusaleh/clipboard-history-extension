@@ -45,3 +45,8 @@ Link to extension in chrome store: [Clipboard History](https://chrome.google.com
 <p align="center">
     <img src="images/5.png" alt="img5" height="300">
 </p>
+
+
+## Isn't working as expected?
+
+Please create [an issue](https://github.com/saifabusaleh/clipboard-history-extension/issues/new)
