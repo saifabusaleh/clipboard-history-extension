@@ -14,7 +14,7 @@
     "browser_action": {
         "default_icon": "icons/icon512.png",
         "default_popup": "src/browser_actions/popup.html",
-        "default_title": "Text Saver"
+        "default_title": "Clipboard History"
     },
     "background": {
         "scripts": [
