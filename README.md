@@ -3,7 +3,7 @@
 ![GitHub](https://flat.badgen.net/github/release/saifabusaleh/clipboard-history-extension/1.1)
 
 
-# Text Saver Chrome extension
+# Clipboard history Chrome extension
 
 Extension to save history of copied text in chrome browser.
 
@@ -18,13 +18,15 @@ Link to extension in chrome store: [Clipboard History](https://chrome.google.com
 
 ## How to use
 
-* Clicking on clear saved text will clear all the saved text
-
-* Hovering on one item will show all the text content in the toolip
-
 * Clicking on one item will copy the text to clipboard
 
 * Searching for text will search all the items for matching text
+
+* Hovering over one item will show all the text content in the toolip
+
+* Clicking on clear saved text will clear all the saved text
+
+
 
 ## Images
 
