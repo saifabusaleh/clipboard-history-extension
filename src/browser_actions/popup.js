@@ -76,6 +76,7 @@ const performSearch = (searchText) => {
 
 const onResetClick = () => {
     chrome.runtime.sendMessage({ clear: true });
+    renderClippings();
 }
 
 const onClipClick = (e) => {
