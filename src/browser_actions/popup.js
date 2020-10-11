@@ -52,8 +52,16 @@ const addClip = (clip) => {
     const dateDiv = document.createElement("div");
     dateDiv.textContent = clip.creationDate;
     dateDiv.className = "creation-date";
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent= `X`;
+    deleteButton.addEventListener('click', () => {
+        onDeleteItemClick(clip.creationDate);
+    });
+
     clippingListItem.appendChild(textDiv);
     clippingListItem.appendChild(dateDiv);
+    clippingListItem.appendChild(deleteButton);
     clippingListElement.appendChild(clippingListItem);
 }
 
@@ -77,6 +85,12 @@ const performSearch = (searchText) => {
 const onResetClick = () => {
     chrome.runtime.sendMessage({ clear: true });
     renderClippings();
+}
+
+const onDeleteItemClick = (timestamp) => {
+    chrome.runtime.sendMessage({ clear: true, timestamp}, (response) => {
+        renderClippings(response.clippings)
+    });
 }
 
 const onClipClick = (e) => {
