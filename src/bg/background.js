@@ -5,6 +5,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     else if ("getTheme" in request) {
         getTheme(sendResponse);
     }
+    else if ("clear" in request) {
+        clearHandler(request, sendResponse);
+    }
     else {
         getClippings(request, sendResponse);
     }
@@ -29,14 +32,24 @@ const getTheme = (sendResponse) => {
     });
 }
 
+const clearHandler = (request, sendResponse) => {
+    chrome.storage.sync.get("clippings", (result) => {
+        let clippings;
+        if (request.timestamp) {
+            clippings = result.clippings || [];
+            clippings = clippings.filter((clip) => clip.creationDate !== request.timestamp);
+        } else clippings = [];
+        chrome.storage.sync.set({ clippings }, () => {
+            sendResponse({ clippings});
+        });
+    });
+}
+
 
 const getClippings = (request, sendResponse) => {
     chrome.storage.sync.get("clippings", (result) => {
         let clippings = result.clippings || [];
-        if (request.clear) {
-            clippings = [];
-        }
-        else if (request.selection) {
+        if (request.selection) {
             clippings = [...clippings, { text: request.selection, creationDate: new Date().toLocaleString() }];
         }
         chrome.storage.sync.set({ clippings }, () => {
