@@ -107,3 +107,13 @@ input {
     border-radius: 4px;
     border: 1px solid var(--fg);
 }
+
+svg.delete-item {
+    background-color: #6a737d;
+    border-radius: 6px;
+}
+
+#delete-button {
+    border: none;
+    background-color: transparent;
+}
