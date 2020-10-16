@@ -83,7 +83,7 @@ const addClip = (clip) => {
 
 const onSearchInputKeyup = (e) => {
     this.searchText = e.target.value.toLowerCase();
-    const filteredList = clippingsList.filter((item) => item.text.toLowerCase().includes(this.searchText));
+    const filteredList = filterClippingsList(clippingsList, this.searchText);
     handleSearch(this.searchText, filteredList);
 }
 
@@ -111,9 +111,9 @@ const onResetClick = () => {
 
 const onDeleteItemClick = (timestamp) => {
     chrome.runtime.sendMessage({ clear: true, timestamp }, (response) => {
-        clippingsList = response.clippings
+        clippingsList = response.clippings;
         if (this.searchText && this.searchText.length) {
-            const filteredList = clippingsList.filter((item) => item.text.toLowerCase().includes(this.searchText))
+            const filteredList = filterClippingsList(clippingsList, this.searchText);
             handleSearch(this.searchText, filteredList);
         } else {
             renderClippings(response.clippings);
@@ -137,6 +137,10 @@ const renderClippingOnLoad = () => {
         clippingsList = response.clippings.reverse();
         renderClippings(response.clippings);
     });
+}
+
+const filterClippingsList = (clippings, text) => {
+    return clippings.filter((item) => item.text.toLowerCase().includes(text))
 }
 
 const debounce = (fn, timeoutInterval) => {
