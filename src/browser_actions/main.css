@@ -48,6 +48,7 @@ body {
     margin-top: 0.4rem;
     border: 2px solid #e1e4e8;
     border-radius: 6px;
+    margin-right: 10px;
 }
 
 .body-container li .text {
