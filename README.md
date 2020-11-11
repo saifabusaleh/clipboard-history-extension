@@ -24,7 +24,7 @@ Link to extension in chrome store: [Clipboard History](https://chrome.google.com
 
 * Searching for text will search all the items for matching text
 
-* Hovering over one item will show all the text content in the toolip
+* Hovering over one item will show all the text content in a tooltip
 
 * Clicking on clear saved text will clear all the saved text
 
