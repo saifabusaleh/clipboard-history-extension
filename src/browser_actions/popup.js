@@ -140,7 +140,7 @@ const renderClippingOnLoad = () => {
 }
 
 const filterClippingsList = (clippings, text) => {
-    return clippings.filter((item) => item.text.toLowerCase().includes(text))
+    return clippings.filter((clipping) => clipping.text.toLowerCase().includes(text))
 }
 
 const debounce = (fn, timeoutInterval) => {
