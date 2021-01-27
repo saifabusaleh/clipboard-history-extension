@@ -8,6 +8,10 @@
     --fg: #222;
 }
 
+button {
+    cursor: pointer;
+}
+
 .dark-theme {
     /* Dark Mode colors */
     --bg: #1c1c1c;
@@ -17,6 +21,11 @@
 .dark-theme button, .dark-theme input, .dark-theme .body-container li {
     border-color: #303030;
     border-style: solid;
+}
+
+.dark-theme button {
+    color: var(--fg);
+    background-color: var(--bg);
 }
 
 .dark-theme input:focus {
@@ -48,7 +57,6 @@ body {
     margin-top: 0.4rem;
     border: 2px solid #e1e4e8;
     border-radius: 6px;
-    margin-right: 10px;
 }
 
 .body-container li .text {
