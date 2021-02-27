@@ -5,7 +5,7 @@
 
 # Clipboard history Chrome extension
 
-Extension to save history of copied text in chrome browser
+Extension to save history of copied text in Chrome browser
 
 it saves each item copied on the clipboard allowing access to any of those items any time later
 
@@ -15,7 +15,7 @@ Link to extension in chrome store: [Clipboard History](https://chrome.google.com
 ## Getting started
 1. Turn on developer mode on chrome extensions page
 2. Click Load unpacked, and then load the directory of the project
-3. After Copying text, you will see it in the extension popup
+3. After Copying text, you will see it in the extension pop-up
 
 
 ## How to use
