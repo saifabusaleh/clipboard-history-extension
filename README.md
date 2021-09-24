@@ -1,5 +1,5 @@
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-yellow.svg?style=flat)](https://github.com/Coding-Coach/find-a-mentor/issues)
-[![The MIT License](https://flat.badgen.net/badge/license/MIT/orange)](http://opensource.org/licenses/MIT)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-yellow.svg?style=flat)](https://github.com/saifabusaleh/clipboard-history-extension/issues)
+[![The GNU3 License](https://flat.badgen.net/badge/license/gnu3/orange)](https://opensource.org/licenses/GPL-3.0)
 ![GitHub](https://flat.badgen.net/github/release/saifabusaleh/clipboard-history-extension/1.1)
 
 
@@ -14,7 +14,7 @@ Link to extension in chrome store: [Clipboard History](https://chrome.google.com
 
 ## Getting started
 1. Install [Clipboard History](https://chrome.google.com/webstore/detail/clipboard-history/mhokbaagmjlbflncohdhinppihlojpco?hl=en&authuser=0)
-2. After Copying text, you will see it in the extension pop-up
+2. After Copying text, it will be saved in the extension
 
 
 ## Extension features
