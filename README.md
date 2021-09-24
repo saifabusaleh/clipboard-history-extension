@@ -13,6 +13,7 @@ Link to extension in chrome store: [Clipboard History](https://chrome.google.com
 
 
 ## Getting started
+
 1. Install [Clipboard History](https://chrome.google.com/webstore/detail/clipboard-history/mhokbaagmjlbflncohdhinppihlojpco?hl=en&authuser=0)
 2. After Copying text, it will be saved in the extension
 
@@ -20,11 +21,8 @@ Link to extension in chrome store: [Clipboard History](https://chrome.google.com
 ## Extension features
 
 * Clicking on one item will copy the text to clipboard
-
-* Searching for text will search all the items for matching text
-
+* Searching for text will search all the items for matched text
 * Hovering over one item will show all the text content in a tooltip
-
 * Clicking on clear saved text will clear all the saved text
 
 
@@ -32,7 +30,7 @@ Link to extension in chrome store: [Clipboard History](https://chrome.google.com
 1. Clone the project
 2. Turn on developer mode on Chrome extensions page
 3. Click Load unpacked, and then load the directory of the project
-4. After Copying text, you will see it in the extension pop-up
+
 
 ## Images
 
@@ -46,4 +44,3 @@ Please create [an issue](https://github.com/saifabusaleh/clipboard-history-exten
 ## License
 
 [LICENSE](https://github.com/saifabusaleh/clipboard-history-extension/blob/master/LICENSE)
-
