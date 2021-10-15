@@ -28,6 +28,10 @@ button {
     background-color: var(--bg);
 }
 
+.dark-theme button:active{
+    background-color: #929597;
+}
+
 .dark-theme input:focus {
     border: 1px solid var(--fg);
     outline: none;
