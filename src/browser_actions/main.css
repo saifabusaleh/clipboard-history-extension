@@ -130,3 +130,9 @@ svg.delete-item {
     border: none;
     background-color: transparent;
 }
+
+#export-button{
+     background: none;
+    border: none;
+    outline: none;
+}

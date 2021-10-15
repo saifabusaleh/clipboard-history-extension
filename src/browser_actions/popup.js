@@ -37,6 +37,9 @@ window.onload = () => {
             setDarkTheme();
         }
     });
+
+    const exportBtn = document.querySelector("#export-button");
+    exportBtn.addEventListener("click", (e) => exportJson());
 };
 
 const renderClippings = (clippings) => {
@@ -84,9 +87,9 @@ const addClip = (clip) => {
 }
 
 const onSearchInputKeyup = (e) => {
-    this.searchText = e.target.value.toLowerCase();
-    const filteredList = filterClippingsList(clippingsList, this.searchText);
-    handleSearch(this.searchText, filteredList);
+    searchText = e.target.value.toLowerCase();
+    const filteredList = filterClippingsList(clippingsList, searchText);
+    handleSearch(searchText, filteredList);
 }
 
 const handleSearch = (searchText, filteredList) => {
@@ -175,4 +178,22 @@ const setLightTheme = () => {
 const setDarkTheme = () => {
     htmlElement.classList.add("dark-theme");
     themePath.setAttribute("d", sunSvgPath);
+}
+
+const exportJson = () => {
+    let clipboardHistory = []
+    if (!searchText) {
+        clipboardHistory = JSON.stringify(clippingsList);
+    } else {
+        const filteredList = filterClippingsList(clippingsList, searchText);
+        clipboardHistory = JSON.stringify(filteredList);
+    }
+    const exportLink = document.createElement("a");
+    var exportBlob = new Blob([clipboardHistory], { type: "octet/stream" });
+    const todayDate = new Date().toLocaleDateString("en-GB");
+    const exportFileName = `clipboard-history-${todayDate}.json`;
+    const exportUrl = window.URL.createObjectURL(exportBlob);
+    exportLink.setAttribute("href", exportUrl);
+    exportLink.setAttribute("download", exportFileName);
+    exportLink.click();
 }
