@@ -26,12 +26,6 @@ Link to extension in chrome store: [Clipboard History](https://chrome.google.com
 * Clicking on clear saved text will clear all the saved text
 
 
-## Development environment
-1. Clone the project
-2. Turn on developer mode on Chrome extensions page
-3. Click Load unpacked, and then load the directory of the project
-
-
 ## Images
 
 See [here](https://github.com/saifabusaleh/clipboard-history-extension/tree/master/images)
