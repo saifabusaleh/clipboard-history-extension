@@ -37,6 +37,9 @@ window.onload = () => {
             setDarkTheme();
         }
     });
+
+    const exportBtn = document.querySelector("#export-button");
+    exportBtn.addEventListener("click", (e) => exportJson());
 };
 
 const renderClippings = (clippings) => {
@@ -84,18 +87,18 @@ const addClip = (clip) => {
 }
 
 const onSearchInputKeyup = (e) => {
-    this.searchText = e.target.value.toLowerCase();
-    const filteredList = filterClippingsList(clippingsList, this.searchText);
-    handleSearch(this.searchText, filteredList);
+    const searchInput = e.target.value.toLowerCase();
+    const filteredList = filterClippingsList(clippingsList, searchInput);
+    handleSearch(searchInput, filteredList);
 }
 
-const handleSearch = (searchText, filteredList) => {
+const handleSearch = (searchInput, filteredList) => {
     clippingListElement.classList.remove("hide");
     notFoundTextElement.innerHTML = "";
     if (filteredList && filteredList.length > 0) {
         renderClippings(filteredList);
-    } else if (searchText && searchText.length) {
-        searchText = escapeHtml(searchText);
+    } else if (searchInput && searchInput.length) {
+        searchText = escapeHtml(searchInput);
         notFoundTextElement.innerHTML = `There are no results for "${searchText}"`;
         clippingListElement.classList.add("hide");
     }
@@ -175,4 +178,22 @@ const setLightTheme = () => {
 const setDarkTheme = () => {
     htmlElement.classList.add("dark-theme");
     themePath.setAttribute("d", sunSvgPath);
+}
+
+const exportJson = () => {
+    let clipboardHistory = []
+    const filteredList = filterClippingsList(clippingsList, searchText);
+    if (!searchText) {
+        clipboardHistory = JSON.stringify(clippingsList);
+    } else {
+        clipboardHistory = JSON.stringify(filteredList);
+    }
+    const exportLink = document.createElement("a");
+    var exportBlob = new Blob([clipboardHistory], { type: "octet/stream" });
+    const todayDate = new Date().toLocaleDateString("en-GB");
+    const exportFileName = `clipboard-history-${todayDate}.json`;
+    const exportUrl = window.URL.createObjectURL(exportBlob);
+    exportLink.setAttribute("href", exportUrl);
+    exportLink.setAttribute("download", exportFileName);
+    exportLink.click();
 }
