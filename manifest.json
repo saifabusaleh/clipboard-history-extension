@@ -1,5 +1,5 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Clipboard History",
     "version": "1.4",
     "description": "Extension to save history of copied text in browser",
@@ -11,16 +11,13 @@
         "256": "icons/icon256.png",
         "512": "icons/icon512.png"
     },
-    "browser_action": {
+    "action": {
         "default_icon": "icons/icon512.png",
         "default_popup": "src/browser_actions/popup.html",
         "default_title": "Clipboard History"
     },
     "background": {
-        "scripts": [
-            "src/bg/background.js"
-        ],
-        "persistent": false
+        "service_worker": "src/bg/background.js"
     },
     "content_scripts": [
         {
