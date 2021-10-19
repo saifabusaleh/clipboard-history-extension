@@ -58,7 +58,7 @@ const createClipTextElement = (text) => {
 
 const createClipDateElement = (creationDate) => {
     const dateDiv = document.createElement("div");
-    dateDiv.textContent = creationDate;
+    dateDiv.textContent = new Date(creationDate).toLocaleString();
     dateDiv.className = "creation-date";
     return dateDiv;
 }
@@ -182,11 +182,12 @@ const setDarkTheme = () => {
 
 const exportJson = () => {
     let clipboardHistory = []
+    const readableClippingsList = clippingsList.map(clip => ({ ...clip, creationDate: new Date(clip.creationDate).toLocaleString() }))
     if (!searchText) {
-        clipboardHistory = JSON.stringify(clippingsList);
+        clipboardHistory = JSON.stringify(readableClippingsList, null, 2);
     } else {
-        const filteredList = filterClippingsList(clippingsList, searchText);
-        clipboardHistory = JSON.stringify(filteredList);
+        const filteredList = filterClippingsList(readableClippingsList, searchText);
+        clipboardHistory = JSON.stringify(filteredList, null, 2);
     }
     const exportLink = document.createElement("a");
     var exportBlob = new Blob([clipboardHistory], { type: "octet/stream" });
@@ -197,3 +198,4 @@ const exportJson = () => {
     exportLink.setAttribute("download", exportFileName);
     exportLink.click();
 }
+
