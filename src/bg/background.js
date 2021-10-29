@@ -50,7 +50,7 @@ const getClippings = (request, sendResponse) => {
     chrome.storage.sync.get("clippings", (result) => {
         let clippings = result.clippings || [];
         if (request.selection) {
-            clippings = [...clippings, { text: request.selection, creationDate: new Date().getTime() }];
+            clippings = [{ text: request.selection, creationDate: new Date().getTime() }, ...clippings];
         }
         chrome.storage.sync.set({ clippings }, () => {
             sendResponse({ clippings });

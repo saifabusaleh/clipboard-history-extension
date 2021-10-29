@@ -140,7 +140,7 @@ const onClipClick = (e) => {
 
 const renderClippingOnLoad = () => {
     chrome.runtime.sendMessage({}, (response) => {
-        clippingsList = response.clippings.reverse();
+        clippingsList = response.clippings;
         renderClippings(response.clippings);
     });
 }
